@@ -2,7 +2,13 @@
 
 import sys
 
-with open(sys.argv[1], 'r') as file:
+print()
+print("=========================================")
+with open(sys.argv[1], "r") as file:
     file_content = file.read().strip()
-    lines = file_content.split('\n')
+    lines = file_content.split("\n")
     records = [[c for c in row] for row in lines]
+
+print("first star :")
+
+print("second star:")

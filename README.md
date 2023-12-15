@@ -1,6 +1,7 @@
 # Advent of Code Solutions
 
-This repository contains my solutions for Advent of Code challenges. Each folder corresponds to the respective year, and each subfolder represents a specific day of the challenge.
+This repository contains my solutions for Advent of Code challenges. Each folder corresponds to the respective year,
+and each subfolder represents a specific day of the challenge.
 
 ## Repository Organization
 
@@ -34,3 +35,16 @@ python 2023/dayXX/solution.py ./puzzles/input.day01.txt
 ```
 
 Each solution should print two lines - the answer for star 1 and the answer for star 2.
+
+## Init script
+
+The init.sh script, available for certain years, utilizes a Python script template that I prefer, ensuring a quicker
+setup. To execute it, use the following command:
+
+```bash
+# For Day 1; having it on 2 digits aids in sorting file names
+bash init.sh 01
+```
+
+This script is designed to streamline the preparation process and set up the initial structure for a new day's
+solution. Adjust the day number accordingly.
