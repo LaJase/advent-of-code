@@ -15,10 +15,7 @@ def getPosForStar(x, y, number):
     Yend = Ystart + Ysize
     Yendend = Yend if Yend <= len(tab[x]) else len(tab[x])
 
-    posReturn = []
     pos = ""
-
-    # print(Ystart, Ysize, Yend, Yendend)
 
     if x > 0:
         linebefore = tab[x - 1]
@@ -26,7 +23,6 @@ def getPosForStar(x, y, number):
         for itemIndex, item in enumerate(subListBefore):
             if item == '*':
                 pos = str(x-1) + " " + str(Ystart + itemIndex)
-                # posReturn.append(pos)
 
     if x < len(tab) - 1:
         lineUnder = tab[x + 1]
@@ -35,22 +31,16 @@ def getPosForStar(x, y, number):
         for itemIndex, item in enumerate(subListAfter):
             if item == '*':
                 pos = str(x+1) + " " + str(Ystart + itemIndex)
-                # posReturn.append(pos)
 
     if y > 0:
-        # print("char before: ", tab[x][y-1])
         if tab[x][y-1] == '*':
             pos = str(x) + " " + str(y - 1)
-            # posReturn.append(pos)
 
     if Yend < len(tab[x]):
-        # print("char after: ", tab[x][Yend-1])
         if tab[x][Yend - 1] == '*':
             pos = str(x) + " " + str(Yend - 1)
-            # posReturn.append(pos)
 
     if len(pos) > 0:
-        # charac = tab[int(posReturn[0].split()[0])][int(posReturn[0].split()[1])]
         charac = tab[int(pos.split()[0])][int(pos.split()[1])]
         print("pos: [{}], char: {}".format(pos, charac))
 
@@ -66,27 +56,22 @@ def isThereASpecialCharForMyNumber(x, y, number):
 
     chars = []
 
-    # print(Ystart, Ysize, Yend, Yendend)
 
     if x > 0:
         linebefore = tab[x - 1]
         subListBefore = linebefore[Ystart:Yendend]
         chars.extend(subListBefore)
-        # print("line Before :", subListBefore)
 
     if x < len(tab) - 1:
         lineUnder = tab[x + 1]
 
         subListAfter = lineUnder[Ystart:Yendend]
         chars.extend(subListAfter)
-        # print("line After :", subListAfter)
 
     if y > 0:
-        # print("char before: ", tab[x][y-1])
         chars.append(tab[x][y-1])
 
     if Yend < len(tab[x]):
-        # print("char after: ", tab[x][Yend-1])
         chars.append(tab[x][Yend - 1])
 
     for el in chars:
@@ -96,7 +81,7 @@ def isThereASpecialCharForMyNumber(x, y, number):
     return False
 
 
-with open("./input1.txt", 'r') as file:
+with open("../puzzles/input.day3.txt", 'r') as file:
     for line in file:
         tab.append([*line.strip()])
 
@@ -110,19 +95,13 @@ for lineIndex, line in enumerate(tab):
             number = number + char
 
         elif not char.isdigit() and isAlreadyFound:
-            # print(x, y, number)
-
-            # Appel de la fonction pour recherche char spec
             isValid = isThereASpecialCharForMyNumber(x, y, number)
-            # print(number, isValid)
 
             posList = getPosForStar(x, y, number)
             if posList != "":
                 if posList in secondResultDict:
-                    # Si la clé existe, ajouter la valeur num à la liste existante
                     secondResultDict[posList].append(number)
                 else:
-                    # Si la clé n'existe pas, créer une nouvelle liste avec la valeur num
                     secondResultDict[posList] = [number]
 
             if isValid:

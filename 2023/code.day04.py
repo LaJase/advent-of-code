@@ -5,7 +5,7 @@ def firstStar():
     myNumbers = []
     winning = []
     result = 0
-    with open("./input-1.txt", 'r') as file:
+    with open("../puzzles/input.day4.txt", 'r') as file:
         for line in file:
             splitted = line.strip().split(": ")[1].split(" | ")
             myNumbers = splitted[1].strip()
@@ -44,7 +44,7 @@ def secondStar():
     print("result: ", sum(copies))
 
 
-# firstStar()
+firstStar()
 print()
 secondStar()
 print()

@@ -1,7 +1,7 @@
 #! /usr/bin/python3.10
 
 def firstStar():
-    with open("./input-1.txt", 'r') as file:
+    with open("../puzzles/input.day6.star1.txt", 'r') as file:
         times = file.readline().split(":")[1].strip().split()
         distances = file.readline().split(":")[1].strip().split()
 
@@ -21,7 +21,7 @@ def firstStar():
 
 
 def secondStar():
-    with open("./input-2.txt", 'r') as file:
+    with open("../puzzles/input.day6.star2.txt", 'r') as file:
         times = file.readline().split(":")[1].strip().split()
         distances = file.readline().split(":")[1].strip().split()
 
@@ -39,7 +39,7 @@ def secondStar():
     print(result)
 
 
-# firstStar()
+firstStar()
 print()
 secondStar()
 print()
