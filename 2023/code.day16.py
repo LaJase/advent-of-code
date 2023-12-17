@@ -54,24 +54,23 @@ while len(tiles) > 0:
         energized.add((x, y))
         print()
         print(x, y, direction, records[y][x])
-        print(follower(summerized, energized, line_number))
-        # print(energized)
-        # print(x, y, direction)
 
         if records[y][x] == "|":
             if direction == "right" or direction == "left":
                 tiles.append((x, y + 1, "down"))
                 tiles.append((x, y - 1, "up"))
-            else:
-                tiles.append((x, y, direction))
+            elif direction == "up":
+                tiles.append((x, y - 1, "up"))
+            elif direction == "down":
+                tiles.append((x, y + 1, "down"))
         if records[y][x] == "-":
             if direction == "down" or direction == "up":
                 tiles.append((x - 1, y, "left"))
                 tiles.append((x + 1, y, "right"))
             elif direction == "right":
-                tiles.append((x, y + 1, "right"))
+                tiles.append((x + 1, y, "right"))
             elif direction == "left":
-                tiles.append((x, y - 1, "left"))
+                tiles.append((x - 1, y, "left"))
         if records[y][x] == "/":
             if direction == "down":
                 tiles.append((x - 1, y, "left"))
@@ -87,7 +86,7 @@ while len(tiles) > 0:
             elif direction == "up":
                 tiles.append((x - 1, y, "left"))
             elif direction == "right":
-                tiles.append((x + 1, y, "down"))
+                tiles.append((x, y + 1, "down"))
             elif direction == "left":
                 tiles.append((x, y - 1, "up"))
         if records[y][x] == ".":
@@ -100,7 +99,9 @@ while len(tiles) > 0:
             elif direction == "left":
                 tiles.append((x - 1, y, "left"))
 
-    # time.sleep(1)
+        print(follower(summerized, energized, line_number))
+
+    time.sleep(1)
 
 
 print(energized)
