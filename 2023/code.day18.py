@@ -15,7 +15,7 @@ with open(sys.argv[1], "r") as file:
     records = [row.split() for row in lines]
 
 
-def calcul_aire(input):
+def calc_nb_point(input):
     current = (0, 0)
     pos = []
     pos.append((0, 0))
@@ -46,13 +46,13 @@ def reorg_input(input_to_reorg):
 
 
 start_time = perf_counter()
-print("first star: ", calcul_aire([[d, leng] for d, leng, _ in records]))
+print("first star: ", calc_nb_point([[d, leng] for d, leng, _ in records]))
 print("Time:", round(perf_counter() - start_time, 4), "sec")
 print()
 
 
 start_time = perf_counter()
-print("second star:", calcul_aire(reorg_input(lines)))
+print("second star:", calc_nb_point(reorg_input(lines)))
 print("Time:", round(perf_counter() - start_time, 4), "sec")
 print()
 print("Total time:", round(perf_counter() - total_start_time, 4), "sec")
