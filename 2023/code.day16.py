@@ -1,11 +1,10 @@
 #! /usr/bin/python3.10
 
 import sys
-import copy
-import time
+from collections import deque
+from time import perf_counter
 
-print()
-print("=========================================")
+total_start_time = perf_counter()
 with open(sys.argv[1], "r") as file:
     file_content = file.read().strip()
     lines = file_content.split("\n")
@@ -14,97 +13,70 @@ with open(sys.argv[1], "r") as file:
 line_number = len(records)
 col_number = len(records[0])
 
-assoc = {
-    "|": {
-        "right": {"move": [(0, 1), (0, -1)], "dest": "north"},
-        "left": {"move": (0, -1), "dest": "south"},
-    },
-    "-": {
-        "east": {"move": (-1, 0), "dest": "east"},
-        "west": {"move": (1, 0), "dest": "west"},
-    },
-    "/": {
-        "north": {"move": (1, 0), "dest": "west"},
-        "east": {"move": (0, -1), "dest": "south"},
-    },
-    "\\": {
-        "north": {"move": (-1, 0), "dest": "east"},
-        "west": {"move": (0, -1), "dest": "south"},
-    },
-}
+directions = {"E": (1, 0), "W": (-1, 0), "N": (0, -1), "S": (0, 1)}
+right_mirror = {"E": "N", "W": "S", "N": "E", "S": "W"}
+left_mirror = {"E": "S", "W": "N", "N": "W", "S": "E"}
 
 
-def follower(grid, pos, grid_length):
-    for x, y in pos:
-        grid[y][x] = "#"
+def get_energized_tiles(grid, start_beam=(-1, 0, "E")):
+    beam_queue = deque([start_beam])
+    energized_tiles = set()
+    beam_history = set()
 
-    for i in range(grid_length):
-        print("".join(grid[i]))
+    while beam_queue:
+        x, y, direction = beam_queue.pop()
+        if (x, y, direction) in beam_history:
+            continue
 
+        energized_tiles.add((x, y))
+        beam_history.add((x, y, direction))
 
-summerized = copy.deepcopy(records)
+        dx, dy = directions[direction]
+        next_x, next_y = x + dx, y + dy
 
-tiles = []
-tiles.append((0, 0, "right"))
-energized = set()
-while len(tiles) > 0:
-    # print(tiles)
-    x, y, direction = tiles.pop()
-    if 0 <= x < col_number and 0 <= y < line_number:
-        energized.add((x, y))
-        print()
-        print(x, y, direction, records[y][x])
+        if next_x < 0 or next_x >= len(grid[0]) or next_y < 0 or next_y >= len(grid):
+            continue
 
-        if records[y][x] == "|":
-            if direction == "right" or direction == "left":
-                tiles.append((x, y + 1, "down"))
-                tiles.append((x, y - 1, "up"))
-            elif direction == "up":
-                tiles.append((x, y - 1, "up"))
-            elif direction == "down":
-                tiles.append((x, y + 1, "down"))
-        if records[y][x] == "-":
-            if direction == "down" or direction == "up":
-                tiles.append((x - 1, y, "left"))
-                tiles.append((x + 1, y, "right"))
-            elif direction == "right":
-                tiles.append((x + 1, y, "right"))
-            elif direction == "left":
-                tiles.append((x - 1, y, "left"))
-        if records[y][x] == "/":
-            if direction == "down":
-                tiles.append((x - 1, y, "left"))
-            elif direction == "up":
-                tiles.append((x + 1, y, "right"))
-            elif direction == "right":
-                tiles.append((x, y - 1, "up"))
-            elif direction == "up":
-                tiles.append((x + 1, y, "down"))
-        if records[y][x] == "\\":
-            if direction == "down":
-                tiles.append((x + 1, y, "right"))
-            elif direction == "up":
-                tiles.append((x - 1, y, "left"))
-            elif direction == "right":
-                tiles.append((x, y + 1, "down"))
-            elif direction == "left":
-                tiles.append((x, y - 1, "up"))
-        if records[y][x] == ".":
-            if direction == "down":
-                tiles.append((x, y + 1, "down"))
-            elif direction == "up":
-                tiles.append((x, y - 1, "up"))
-            elif direction == "right":
-                tiles.append((x + 1, y, "right"))
-            elif direction == "left":
-                tiles.append((x - 1, y, "left"))
+        match grid[next_y][next_x]:
+            case ".":
+                beam_queue.append((next_x, next_y, direction))
+            case "|":
+                if direction in ("N", "S"):
+                    beam_queue.append((next_x, next_y, direction))
+                else:
+                    beam_queue.append((next_x, next_y, "N"))
+                    beam_queue.append((next_x, next_y, "S"))
+            case "-":
+                if direction in ("E", "W"):
+                    beam_queue.append((next_x, next_y, direction))
+                else:
+                    beam_queue.append((next_x, next_y, "E"))
+                    beam_queue.append((next_x, next_y, "W"))
+            case "/":
+                beam_queue.append((next_x, next_y, right_mirror[direction]))
+            case "\\":
+                beam_queue.append((next_x, next_y, left_mirror[direction]))
 
-        print(follower(summerized, energized, line_number))
-
-    time.sleep(1)
+    return len(energized_tiles) - 1
 
 
-print(energized)
-print("first star :", len(energized))
+print()
+print("=========================================")
+start_time = perf_counter()
+print("first star :", get_energized_tiles(records))
+print("Time: ", perf_counter() - start_time)
+print()
 
-print("second star:")
+start_time = perf_counter()
+energized_list = []
+for i in range(len(records)):
+    energized_list.append(get_energized_tiles(records, (i, -1, "S")))
+    energized_list.append(get_energized_tiles(records, (i, len(records), "N")))
+    energized_list.append(get_energized_tiles(records, (-1, i, "E")))
+    energized_list.append(get_energized_tiles(records, (len(records[i]), i, "W")))
+
+print("second star:", max(energized_list))
+print("Time: ", perf_counter() - start_time)
+print()
+print("Total time:", round(perf_counter() - total_start_time, 4), "sec")
+print("=========================================")

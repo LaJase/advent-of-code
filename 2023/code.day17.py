@@ -6,6 +6,9 @@ from time import perf_counter
 import sys
 
 
+total_start_time = perf_counter()
+
+
 def get_min_heat_loss(heat_map, braking_duration=0, maximum_speed=3):
     crucible_queue = []
     heappush(crucible_queue, (0, 0, 0, 0, 0, 0))
@@ -71,3 +74,6 @@ print("Time: ", perf_counter() - start_time)
 start_time = perf_counter()
 print("\nPart 2:", get_min_heat_loss(records, 4, 10))
 print("Time: ", perf_counter() - start_time)
+print()
+print("Total time:", round(perf_counter() - total_start_time, 4), "sec")
+print("=========================================")
