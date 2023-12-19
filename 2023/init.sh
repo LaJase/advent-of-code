@@ -15,7 +15,7 @@ folder=$(dirname "${0}")
 SESSION_TOKEN=$(cat "$folder"/session-token.txt)
 
 # On copie le script
-CMD="cp ${folder}/code-starter.py ${folder}/code.day${DAY}.py"
+CMD="cp ${folder}/code-starter.py ${folder}/solutions/code.day${DAY}.py"
 echo "${CMD}"
 eval "${CMD}"
 
