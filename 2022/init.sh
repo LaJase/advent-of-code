@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ]; then
 	echo
-	echo "Il faut entrer le numéro du jour"
+	echo "Enter day's number please"
 	echo
 	echo "  $0 <day_num>"
 	echo "      day_num: num of the day (ex: 10)"
@@ -11,8 +11,22 @@ fi
 
 DAY=$1
 
-# On copie le script
 folder=$(dirname "${0}")
-CMD="cp ${folder}/code-starter.py ${folder}/code.day${DAY}.py"
+SESSION_TOKEN=$(cat "$folder"/session-token.txt)
+
+# On copie le script
+CMD="cp ${folder}/code-starter.py ${folder}/solutions/code.day${DAY}.py"
 echo "${CMD}"
 eval "${CMD}"
+
+CMD_INPUT_START="touch $folder/puzzles/input.day$DAY.start.txt"
+echo "${CMD_INPUT_START}"
+eval "${CMD_INPUT_START}"
+
+if [ "$SESSION_TOKEN" != "" ]; then
+	CMD_INPUT="curl 'https://adventofcode.com/2022/day/$DAY/input' -H 'cookie: session=$SESSION_TOKEN' --compressed -o ./$folder/puzzles/input.day$DAY.txt"
+else
+	CMD_INPUT="touch $folder/puzzles/input.day$DAY.txt"
+fi
+eval "${CMD_INPUT}"
+echo "${CMD_INPUT}"
