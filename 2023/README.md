@@ -1,6 +1,6 @@
 # 🎄 Advent of Code 2023 🎄
 
-### Collected Stars 38/50 ⭐
+### Collected Stars 40/50 ⭐
 
 | Day                                                                 | Status | Statement                                                |
 | ------------------------------------------------------------------- | ------ | -------------------------------------------------------- |
@@ -23,3 +23,4 @@
 | [Day 17: Clumsy Crucible](./solutions/code.day17.py)                | ⭐ ⭐  | [Statement day 17](https://adventofcode.com/2023/day/17) |
 | [Day 18: Lavaduct Lagoon](./solutions/code.day18.py)                | ⭐ ⭐  | [Statement day 18](https://adventofcode.com/2023/day/18) |
 | [Day 19: Aplenty](./solutions/code.day19.py)                        | ⭐ ⭐  | [Statement day 19](https://adventofcode.com/2023/day/19) |
+| [Day 20: Pulse Propagation](./solutions/code.day20.py)              | ⭐ ⭐  | [Statement day 20](https://adventofcode.com/2023/day/20) |
