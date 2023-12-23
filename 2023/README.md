@@ -1,6 +1,6 @@
 # 🎄 Advent of Code 2023 🎄
 
-### Collected Stars 42/50 ⭐
+### Collected Stars 44/50 ⭐
 
 | Day                                                                 | Status | Statement                                                |
 | ------------------------------------------------------------------- | ------ | -------------------------------------------------------- |
@@ -25,3 +25,4 @@
 | [Day 19: Aplenty](./solutions/code.day19.py)                        | ⭐ ⭐  | [Statement day 19](https://adventofcode.com/2023/day/19) |
 | [Day 20: Pulse Propagation](./solutions/code.day20.py)              | ⭐ ⭐  | [Statement day 20](https://adventofcode.com/2023/day/20) |
 | [Day 21: Step Counter](./solutions/code.day21.py)                   | ⭐ ⭐  | [Statement day 21](https://adventofcode.com/2023/day/21) |
+| [Day 22: Sand Slabs](./solutions/code.day22.py)                     | ⭐ ⭐  | [Statement day 22](https://adventofcode.com/2023/day/22) |

@@ -3,6 +3,7 @@
 import sys
 import re
 from time import perf_counter
+from types import coroutine
 from parse import parse
 from collections import defaultdict
 
@@ -70,6 +71,15 @@ def get_parents(bricks, occupied):
     return above, below
 
 
+def remove(falling, brick, above, below):
+    if brick in falling:
+        return
+    falling.add(brick)
+    for parent in above[brick]:
+        if not len(below[parent] - falling):
+            remove(falling, parent, above, below)
+
+
 def solve_part1(fallen):
     res = 0
     for brick in fallen:
@@ -80,6 +90,17 @@ def solve_part1(fallen):
 
         if isGood:
             res += 1
+
+    return res
+
+
+def solve_part2(fallen, above, below):
+    res = 0
+
+    for brick in fallen:
+        falling = set()
+        remove(falling, brick, above, below)
+        res += len(falling) - 1
 
     return res
 
@@ -98,7 +119,7 @@ print("Time:", round(perf_counter() - start_time, 4), "sec")
 print()
 
 start_time = perf_counter()
-print("second star:")
+print("second star:", solve_part2(fallen, above, below))
 print("Time:", round(perf_counter() - start_time, 4), "sec")
 print()
 print("Total time:", round(perf_counter() - total_start_time, 4), "sec")
