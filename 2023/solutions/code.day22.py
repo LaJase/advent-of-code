@@ -1,9 +1,7 @@
 #! /usr/bin/python3.10
 
 import sys
-import re
 from time import perf_counter
-from types import coroutine
 from parse import parse
 from collections import defaultdict
 

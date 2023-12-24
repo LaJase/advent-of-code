@@ -3,7 +3,6 @@
 import sys
 
 from time import perf_counter
-from copy import deepcopy
 
 sys.setrecursionlimit(3000)
 
@@ -12,6 +11,7 @@ print()
 print("=========================================")
 
 SLOPES = ["<", ">", "^", "v"]
+PATH_LENGTH = set()
 
 
 def parse_input(lines):
@@ -22,30 +22,15 @@ def parse_input(lines):
     return records, start, end
 
 
-PATH_LENGTH = set()
-
-
-def show_grid(grid, pos):
-    grid_print = deepcopy(grid)
-    for x, y in pos:
-        grid_print[y][x] = "O"
-
-    for row in grid_print:
-        print("".join(row))
-
-    print()
-
-
-def longest_path(grid, end, current, memory, dir):
+def dfs_paths_search(grid, end, current, memory):
     if current in memory:
         return
 
-    memory.add(current)
-
     if current == end:
-        memory.remove(end)
         PATH_LENGTH.add(len(memory))
         return
+
+    memory.add(current)
 
     x, y = current
     for dirindex, (dx, dy) in enumerate([(-1, 0), (1, 0), (0, -1), (0, 1)]):
@@ -55,19 +40,17 @@ def longest_path(grid, end, current, memory, dir):
         if not (0 <= newX < len(grid[0]) and 0 <= newY < len(grid)):
             continue
 
-        if grid[y][x] in SLOPES:
-            if dirindex != dir or SLOPES.index(grid[y][x]) != dirindex:
-                continue
+        if grid[newY][newX] in SLOPES and SLOPES.index(grid[newY][newX]) != dirindex:
+            continue
 
-        if grid[newY][newX] != "#" or (grid[y][x] in SLOPES and dirindex != dir):
-            longest_path(grid, end, (newX, newY), memory, dirindex)
+        if grid[newY][newX] != "#":
+            dfs_paths_search(grid, end, (newX, newY), memory)
 
     memory.remove(current)
 
 
 def solve_first(grid, start, end):
-    longest_path(grid, end, start, set(), 0)
-
+    dfs_paths_search(grid, end, start, set())
     return max(PATH_LENGTH)
 
 
