@@ -1,6 +1,6 @@
 # 🎄 Advent of Code 2023 🎄
 
-### Collected Stars 47/50 ⭐
+### Collected Stars 48/50 ⭐
 
 | Day                                                                 | Status | Statement                                                |
 | ------------------------------------------------------------------- | ------ | -------------------------------------------------------- |
@@ -28,3 +28,4 @@
 | [Day 22: Sand Slabs](./solutions/code.day22.py)                     | ⭐ ⭐  | [Statement day 22](https://adventofcode.com/2023/day/22) |
 | [Day 23: A Long Walk](./solutions/code.day23.py)                    | ⭐     | [Statement day 23](https://adventofcode.com/2023/day/23) |
 | [Day 24: Never Tell Me The Odds](./solutions/code.day24.py)         | ⭐ ⭐  | [Statement day 24](https://adventofcode.com/2023/day/24) |
+| [Day 25: Snowverload](./solutions/code.day25.py)                    | ⭐     | [Statement day 25](https://adventofcode.com/2023/day/25) |
