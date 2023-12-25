@@ -2,6 +2,7 @@
 
 import sys
 
+
 from time import perf_counter
 
 sys.setrecursionlimit(3000)
@@ -23,6 +24,9 @@ def parse_input(lines):
 
 
 def dfs_paths_search(grid, end, current, memory):
+    """
+    brute force DFS for the first part, not efficient enough for the second one
+    """
     if current in memory:
         return
 
@@ -54,8 +58,83 @@ def solve_first(grid, start, end):
     return max(PATH_LENGTH)
 
 
-def solve_second():
-    print("first")
+def get_graph(input):
+    graph = {}
+    for line_index, line in enumerate(input):
+        for col_index, c in enumerate(line):
+            if c in ".>v":
+                for dx, dy in [(-1, 0), (0, -1), (0, 1), (1, 0)]:
+                    newX = line_index + dx
+                    newY = col_index + dy
+
+                    if not (0 <= newX < len(input) and 0 <= newY < len(line)):
+                        continue
+
+                    if input[newX][newY] in ".>v":
+                        graph.setdefault((line_index, col_index), set())
+                        graph.setdefault((newX, newY), set())
+
+                        graph[(line_index, col_index)].add((newX, newY, 1))
+                        graph[(newX, newY)].add((line_index, col_index, 1))
+
+    return graph
+
+
+def clean_graph(graph):
+    """
+    The idea here is to remove all nodes with exactly 2 neighbors because this means there is no choice to go further
+    """
+    isProcessing = True
+    while isProcessing:
+        isProcessing = False
+        for key, values in graph.items():
+            if len(values) == 2:
+                isProcessing = True
+                xKey, yKey = key
+                (xA, yA, weightA), (xB, yB, weightB) = values
+
+                graph[(xA, yA)].remove((xKey, yKey, weightA))
+                graph[(xA, yA)].add((xB, yB, weightA + weightB))
+
+                graph[(xB, yB)].remove((xKey, yKey, weightB))
+                graph[(xB, yB)].add((xA, yA, weightA + weightB))
+                del graph[key]
+                break
+        else:
+            break
+
+    return graph
+
+
+def dfs_graph(graph, end, current, memory, path_length):
+    x, y, weight = current
+
+    if (x, y) in memory:
+        return
+
+    if (x, y) == end:
+        path_length.add(weight)
+        return
+
+    memory.add((x, y))
+
+    for xchild, ychild, wchild in graph[(x, y)]:
+        dfs_graph(graph, end, (xchild, ychild, wchild + weight), memory, path_length)
+
+    memory.remove((x, y))
+
+
+def solve_second(input):
+    line_number = len(input)
+    end = (line_number - 1, input[line_number - 1].index("."))
+
+    raw_graph = get_graph(input)
+
+    cleaned_graph = clean_graph(raw_graph)
+    path_length = set()
+    dfs_graph(cleaned_graph, end, (0, input[0].index("."), 0), set(), path_length)
+
+    return max(path_length)
 
 
 with open(sys.argv[1], "r") as file:
@@ -70,7 +149,7 @@ print("Time:", round(perf_counter() - start_time, 4), "sec")
 print()
 
 start_time = perf_counter()
-print("second star:")
+print("second star:", solve_second(lines))
 print("Time:", round(perf_counter() - start_time, 4), "sec")
 print()
 print("Total time:", round(perf_counter() - total_start_time, 4), "sec")
