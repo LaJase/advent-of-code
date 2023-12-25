@@ -11,17 +11,6 @@ print()
 print("=========================================")
 
 
-def parse_input(input):
-    parsed = defaultdict(set)
-    for line in input:
-        node, links = line.split(":")
-        for el in links.split():
-            parsed[node].add(el)
-            parsed[el].add(node)
-
-    return parsed
-
-
 def solve_first(input):
     wirings = defaultdict(set)
 
