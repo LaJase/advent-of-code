@@ -2,30 +2,30 @@
 
 ### Collected Stars 50/50 ⭐
 
-| Day                                                                 | Status | Statement                                                |
-| ------------------------------------------------------------------- | ------ | -------------------------------------------------------- |
-| [Day 1: Trebuchet?!](./solutions/code.day01.py)                     | ⭐ ⭐  | [Statement day 1](https://adventofcode.com/2023/day/1)   |
-| [Day 2: Cube Conundrum](./solutions/code.day02.py)                  | ⭐ ⭐  | [Statement day 2](https://adventofcode.com/2023/day/2)   |
-| [Day 3: Gear Ratios](./solutions/code.day03.py)                     | ⭐ ⭐  | [Statement day 3](https://adventofcode.com/2023/day/3)   |
-| [Day 4: Scratchcards](./solutions/code.day04.py)                    | ⭐ ⭐  | [Statement day 4](https://adventofcode.com/2023/day/4)   |
-| [Day 5: If You Give A Seed A Fertilizer](./solutions/code.day05.py) | ⭐ ⭐  | [Statement day 5](https://adventofcode.com/2023/day/5)   |
-| [Day 6: Wait For It](./solutions/code.day06.py)                     | ⭐ ⭐  | [Statement day 6](https://adventofcode.com/2023/day/6)   |
-| [Day 7: Camel Cards](./solutions/code.day07.py)                     | ⭐ ⭐  | [Statement day 7](https://adventofcode.com/2023/day/7)   |
-| [Day 8: Haunted Wasteland](./solutions/code.day08.py)               | ⭐ ⭐  | [Statement day 8](https://adventofcode.com/2023/day/8)   |
-| [Day 9: Mirage Maintenance](./solutions/code.day09.py)              | ⭐ ⭐  | [Statement day 9](https://adventofcode.com/2023/day/9)   |
-| [Day 10: Pipe Maze](./solutions/code.day10.py)                      | ⭐ ⭐  | [Statement day 10](https://adventofcode.com/2023/day/10) |
-| [Day 11: Cosmic Expansion](./solutions/code.day11.py)               | ⭐ ⭐  | [Statement day 11](https://adventofcode.com/2023/day/11) |
-| [Day 12: Hot Springs](./solutions/code.day12.py)                    | ⭐ ⭐  | [Statement day 12](https://adventofcode.com/2023/day/12) |
-| [Day 13: Point of Incidence](./solutions/code.day13.py)             | ⭐ ⭐  | [Statement day 13](https://adventofcode.com/2023/day/13) |
-| [Day 14: Parabolic Reflector Dish](./solutions/code.day14.py)       | ⭐ ⭐  | [Statement day 14](https://adventofcode.com/2023/day/14) |
-| [Day 15: Lens Library](./solutions/code.day15.py)                   | ⭐ ⭐  | [Statement day 15](https://adventofcode.com/2023/day/15) |
-| [Day 16: The Floor Will Be Lava](./solutions/code.day16.py)         | ⭐ ⭐  | [Statement day 16](https://adventofcode.com/2023/day/16) |
-| [Day 17: Clumsy Crucible](./solutions/code.day17.py)                | ⭐ ⭐  | [Statement day 17](https://adventofcode.com/2023/day/17) |
-| [Day 18: Lavaduct Lagoon](./solutions/code.day18.py)                | ⭐ ⭐  | [Statement day 18](https://adventofcode.com/2023/day/18) |
-| [Day 19: Aplenty](./solutions/code.day19.py)                        | ⭐ ⭐  | [Statement day 19](https://adventofcode.com/2023/day/19) |
-| [Day 20: Pulse Propagation](./solutions/code.day20.py)              | ⭐ ⭐  | [Statement day 20](https://adventofcode.com/2023/day/20) |
-| [Day 21: Step Counter](./solutions/code.day21.py)                   | ⭐ ⭐  | [Statement day 21](https://adventofcode.com/2023/day/21) |
-| [Day 22: Sand Slabs](./solutions/code.day22.py)                     | ⭐ ⭐  | [Statement day 22](https://adventofcode.com/2023/day/22) |
-| [Day 23: A Long Walk](./solutions/code.day23.py)                    | ⭐ ⭐  | [Statement day 23](https://adventofcode.com/2023/day/23) |
-| [Day 24: Never Tell Me The Odds](./solutions/code.day24.py)         | ⭐ ⭐  | [Statement day 24](https://adventofcode.com/2023/day/24) |
-| [Day 25: Snowverload](./solutions/code.day25.py)                    | ⭐ ⭐  | [Statement day 25](https://adventofcode.com/2023/day/25) |
+| Day                                                                             | Python                     | Go  |
+| ------------------------------------------------------------------------------- | -------------------------- | --- |
+| [Day 1: Trebuchet?!](https://adventofcode.com/2023/day/1)                       | [🐍 🐍](./python/day01.py) |     |
+| [Day 2: Cube Conundrum](https://adventofcode.com/2023/day/2)                    | [🐍 🐍](./python/day02.py) |     |
+| [Day 3: Gear Ratios](https://adventofcode.com/2023/day/3)                       | [🐍 🐍](./python/day03.py) |     |
+| [ Day 4: Scratchcards ](https://adventofcode.com/2023/day/4)                    | [🐍 🐍](./python/day04.py) |     |
+| [ Day 5: If You Give A Seed A Fertilizer ](https://adventofcode.com/2023/day/5) | [🐍 🐍](./python/day05.py) |     |
+| [ Day 6: Wait For It ](https://adventofcode.com/2023/day/6)                     | [🐍 🐍](./python/day06.py) |     |
+| [ Day 7: Camel Cards ](https://adventofcode.com/2023/day/7)                     | [🐍 🐍](./python/day07.py) |     |
+| [ Day 8: Haunted Wasteland ](https://adventofcode.com/2023/day/8)               | [🐍 🐍](./python/day08.py) |     |
+| [ Day 9: Mirage Maintenance ](https://adventofcode.com/2023/day/9)              | [🐍 🐍](./python/day09.py) |     |
+| [ Day 10: Pipe Maze ](https://adventofcode.com/2023/day/10)                     | [🐍 🐍](./python/day10.py) |     |
+| [ Day 11: Cosmic Expansion ](https://adventofcode.com/2023/day/11)              | [🐍 🐍](./python/day11.py) |     |
+| [ Day 12: Hot Springs ](https://adventofcode.com/2023/day/12)                   | [🐍 🐍](./python/day12.py) |     |
+| [ Day 13: Point of Incidence ](https://adventofcode.com/2023/day/13)            | [🐍 🐍](./python/day13.py) |     |
+| [ Day 14: Parabolic Reflector Dish ](https://adventofcode.com/2023/day/14)      | [🐍 🐍](./python/day14.py) |     |
+| [ Day 15: Lens Library ](https://adventofcode.com/2023/day/15)                  | [🐍 🐍](./python/day15.py) |     |
+| [ Day 16: The Floor Will Be Lava ](https://adventofcode.com/2023/day/16)        | [🐍 🐍](./python/day16.py) |     |
+| [ Day 17: Clumsy Crucible ](https://adventofcode.com/2023/day/17)               | [🐍 🐍](./python/day17.py) |     |
+| [ Day 18: Lavaduct Lagoon ](https://adventofcode.com/2023/day/18)               | [🐍 🐍](./python/day18.py) |     |
+| [ Day 19: Aplenty ](https://adventofcode.com/2023/day/19)                       | [🐍 🐍](./python/day19.py) |     |
+| [ Day 20: Pulse Propagation ](https://adventofcode.com/2023/day/20)             | [🐍 🐍](./python/day20.py) |     |
+| [ Day 21: Step Counter ](https://adventofcode.com/2023/day/21)                  | [🐍 🐍](./python/day21.py) |     |
+| [ Day 22: Sand Slabs ](https://adventofcode.com/2023/day/22)                    | [🐍 🐍](./python/day22.py) |     |
+| [ Day 23: A Long Walk ](https://adventofcode.com/2023/day/23)                   | [🐍 🐍](./python/day23.py) |     |
+| [ Day 24: Never Tell Me The Odds ](https://adventofcode.com/2023/day/24)        | [🐍 🐍](./python/day24.py) |     |
+| [ Day 25: Snowverload ](https://adventofcode.com/2023/day/25)                   | [🐍 🐍](./python/day25.py) |     |
