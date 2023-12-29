@@ -10,33 +10,53 @@ and each subfolder represents a specific day of the challenge.
 ├── 2022/
 ├── 2023/
 │ ├── puzzles/
-│ │ ├── input.day01.txt
-│ │ ├── input.day02.txt
-│ │ ├── input.day03.txt
+│ │ ├── day01.txt
+│ │ ├── day02.txt
+│ │ ├── day03.txt
 │ │ └── ...
 │ │
-│ ├── code.day01.py
-│ ├── code.day02.py
-│ ├── code.day03.py
-│ └── ...
-│
+│ ├── python/
+│ │ ├── day01.py
+│ │ ├── day02.py
+│ │ ├── day03.py
+│ │ └── ...
+│ │
+│ ├── go/
+│ │ ├── days/
+│ │ │ ├── day_01/
+│ │ │ │ ├── dayXX_example.txt
+│ │ │ │ ├── main.go
+│ │ │ │ ├── main_test.go
+│ │ │ │ └── ...
+│ │ │ ├── day_02/
+│ │ │ ├── day_03/
+│ │ │ └── ...
+│ │ ├── internal/
+│ │ │ ├── executor.go
+│ │ │ ├── loader.go
+│ │ │ └── ...
+│ │ ├── main.go
+│ │ ├── go.mod
+│ │ └── ...
 └── ... (TBC)
 ```
 
-## Running the Solutions
+## Running the Python Solutions
 
-- For each day, there is a `solution.dayXX.py` file containing the code to solve the corresponding day's problem.
-- The `./puzzles/input.dayXX.txt` files contain input data specific to the problem.
+### How to run a solution
+
+- For each day, there is a `dayXX.py` file containing the code to solve the corresponding day's problem.
+- The `./puzzles/dayXX.txt` files contain input data specific to the problem.
 
 To run a particular solution, use the following command (make sure to have the corresponding language installed):
 
 ```bash
-python 2023/dayXX/solution.py ./puzzles/input.day01.txt
+python 2023/pyhton/dayXX/solution.py ./puzzles/dayXX.txt
 ```
 
 Each solution should print two lines - the answer for star 1 and the answer for star 2.
 
-## Init script
+### Init script
 
 The init.sh script, available for certain years, utilizes a Python script template that I prefer, ensuring a quicker
 setup. To execute it, use the following command:
@@ -48,3 +68,17 @@ bash init.sh 01
 
 This script is designed to streamline the preparation process and set up the initial structure for a new day's
 solution. Adjust the day number accordingly.
+
+## Running the go solutions (WIP)
+
+### How to run the solutions
+
+- For each day there is a folder days/day_XX, `main.go` files contains the solutions code.
+- `dayXX.txt` files are located in the same folder as for Python
+
+To run a particular solution, use the following command (make sure to have the corresponding language installed):
+
+```bash
+# Inside go repository
+go run . -day XX -help
+```
